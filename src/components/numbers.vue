@@ -1,7 +1,7 @@
 <template>
     <div v-for="(item, index) in numbers" class="numbers__container">
-        <input type="checkbox" :id="index" class="numbers__checkbox">
-        <p class="numbers__number">{{item}}</p>
+        <input type="checkbox" :id="index" class="numbers__checkbox" v-model="item.check">
+        <p class="numbers__number">{{item.number}}</p>
     </div>
     <p>Total: {{getSum}}</p>
     <button @click="deleteCheckedBoxes">delete</button>
@@ -11,30 +11,59 @@
 export default {
   data() {
     return {
-      numbers: [1,2,3,4,5,6,7,8,9,11,10],
+      numbers: [{id: 1,
+                number: 2,
+                check: false},
+                {id: 2,
+                number: 2,
+                check: false},
+                {id: 3,
+                number: 3,
+                check: false},
+                {id: 4,
+                number: 2,
+                check: false},
+                {id: 5,
+                number: 2,
+                check: false},
+                {id: 6,
+                number: 2,
+                check: false},
+                {id: 7,
+                number: 2,
+                check: false},
+                {id: 8,
+                number: 2,
+                check: false},
+                {id: 9,
+                number: 2,
+                check: false},
+                {id: 10,
+                number: 2,
+                check: false},
+
+            ]
     };
   },
   methods: {
     generateNumbers: function() {
-        const newNumbers = []
         for (let i = 0; i < 10; i++) {
-            newNumbers.push(Math.floor(Math.random()* 10))
+            this.numbers[i].number = (Math.floor(Math.random()* 10))
         }
-        this.numbers = newNumbers
     },
     deleteCheckedBoxes() {
-       let checked = document.querySelectorAll('.numbers__checkbox:checked')
-       console.log(checked.length)
-       for (let i = 0; i < checked.length; i++){
-        this.numbers.splice(checked[i].id, 1)
-        checked[i].checked = false;
-       }
+        if (window.confirm("Are you sure you want to delete the number?"))
+        this.numbers = this.numbers.filter((number) => !number.check)
     },
   },
   computed: {
     getSum() {
-        const reducer = (accumulator: number, curr: number) => accumulator + curr;
-        return this.numbers.reduce(reducer);
+        let sum = 0;
+        for (let i = 0; i < this.numbers.length; i++){
+            sum = sum + this.numbers[i].number
+            console.log(sum)
+        }
+        return sum
     }
   },
   created(){
