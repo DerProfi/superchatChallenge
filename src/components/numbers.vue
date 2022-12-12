@@ -11,12 +11,14 @@
 </template>
 
 <script lang="ts">
+import type { PropType } from "vue";
 import { api } from "../../services/post";
+import type { ObjectNumbers } from "../types/numbers"
 
 export default {
   data() {
     return {
-        objects: [],
+        objects: [] as PropType<ObjectNumbers> 
     };
   },
   methods: {
