@@ -1,73 +1,49 @@
 <template>
-    <div v-for="(item, index) in numbers" class="numbers__container">
-        <input type="checkbox" :id="index" class="numbers__checkbox" v-model="item.check">
-        <p class="numbers__number">{{item.number}}</p>
+    <div v-for="object in objects" class="numbers__container">
+        <input type="checkbox" class="numbers__checkbox" v-model="object.check">
+        <p class="numbers__number">{{object.number}}</p>
     </div>
+    <hr>
     <p>Total: {{getSum}}</p>
     <button @click="deleteCheckedBoxes">delete</button>
+    <button @click="generateObjects">reset</button>
+    <button @click="postRequest">send</button>
 </template>
 
 <script lang="ts">
+import { api } from "../../services/post";
+
 export default {
   data() {
     return {
-      numbers: [{id: 1,
-                number: 2,
-                check: false},
-                {id: 2,
-                number: 2,
-                check: false},
-                {id: 3,
-                number: 3,
-                check: false},
-                {id: 4,
-                number: 2,
-                check: false},
-                {id: 5,
-                number: 2,
-                check: false},
-                {id: 6,
-                number: 2,
-                check: false},
-                {id: 7,
-                number: 2,
-                check: false},
-                {id: 8,
-                number: 2,
-                check: false},
-                {id: 9,
-                number: 2,
-                check: false},
-                {id: 10,
-                number: 2,
-                check: false},
-
-            ]
+        objects: [],
     };
   },
   methods: {
-    generateNumbers: function() {
+    generateObjects: function(){
         for (let i = 0; i < 10; i++) {
-            this.numbers[i].number = (Math.floor(Math.random()* 10))
+            this.objects[i] = {'number': (Math.floor(Math.random()* 10)), 'check': false} 
         }
     },
     deleteCheckedBoxes() {
         if (window.confirm("Are you sure you want to delete the number?"))
-        this.numbers = this.numbers.filter((number) => !number.check)
+        this.objects = this.objects.filter((object) => !object.check)
     },
+    postRequest() {
+        api(this.getSum);
+    }
   },
   computed: {
     getSum() {
         let sum = 0;
-        for (let i = 0; i < this.numbers.length; i++){
-            sum = sum + this.numbers[i].number
-            console.log(sum)
+        for (let i = 0; i < this.objects.length; i++){
+            sum = sum + this.objects[i].number
         }
         return sum
     }
   },
   created(){
-    this.generateNumbers()
+    this.generateObjects()
   }
 };
 </script>
