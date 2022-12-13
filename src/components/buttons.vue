@@ -1,13 +1,20 @@
 <template>
     <div>
-        <button class="button">delete</button>
-        <button class="button">reset</button>
-        <button class="button">send</button>
+    <button class="button" @click="mainStore.generateObjects">generate</button>
+    <button class="button" @click="mainStore.deleteChecked">delete</button>
+    <button class="button" @click="postRequest">send</button>
     </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import { useMainStore } from '../../store/index'
+import { api } from "../../services/post";
 
+const mainStore = useMainStore()
+
+function postRequest(){
+  api(mainStore.sum)
+}
 </script>
 
 <style scoped>
