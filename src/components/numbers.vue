@@ -1,28 +1,35 @@
 <template>
-    <div v-for="object in mainStore.unchecked" class="numbers__container">
-        <input type="checkbox" class="numbers__checkbox" v-model="object.check">
-        <p class="numbers__number">{{object.number}}</p>
+    <div class="numbers">
+        <div v-for="object in mainStore.unchecked" class="numbers__number">
+            <input type="checkbox" class="numbers__checkbox" v-model="object.check">
+            <p class="numbers__number">{{object.number}}</p>
+        </div>
+        <hr>
+        <p></p>
+        <p>Total: {{mainStore.sum}}</p>
+        <hr>
     </div>
-    <hr>
-    <p></p>
-    <p>Total: {{mainStore.sum}}</p>
-    <hr>
 </template>
 
 <script setup lang="ts">
-import type { ObjectNumbers } from "../types/numbers"
 import { useMainStore } from '../../store/index'
-import { onUpdated } from 'vue'
-
 
 const mainStore = useMainStore()
 
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import '../src/styles/main.scss';
+
 .numbers{
-    &__container{
-        display: flex;
-    }
+    outline: 1px solid red;
+    height: 550px;
 }
+.numbers__number{
+    outline: 1px solid green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 </style>

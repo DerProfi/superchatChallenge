@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h1>Magic numbers</h1>
         <numbers />
         <buttons />
@@ -12,6 +12,7 @@ import buttons from '../components/buttons.vue'
 
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../src/styles/main.scss';
 
 </style>

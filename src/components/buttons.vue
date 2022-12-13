@@ -17,12 +17,7 @@ function postRequest(){
 }
 </script>
 
-<style scoped>
-.button {
-  color: black;
-  padding: 15px 32px;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+<style lang="scss">
+@import '../src/styles/main.scss';
+
 </style>

@@ -1,0 +1,23 @@
+//Modules for reusable components
+@import "./variables";
+
+.button {
+    color: white;
+    background-color: $tertiary;
+    border: none;
+    border-radius: 4px;
+    padding: 15px 32px;
+    font-size: 16px;
+    margin: 4px 10px;
+    cursor: pointer;
+}
+
+.container{
+    background-color: $secondary;
+    color: white;
+    padding: 30px 20px;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
