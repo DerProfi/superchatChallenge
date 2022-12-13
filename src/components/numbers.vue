@@ -10,8 +10,6 @@
 </template>
 
 <script setup lang="ts">
-// import type { PropType } from "vue";
-// import { api } from "../../services/post";
 import type { ObjectNumbers } from "../types/numbers"
 import { useMainStore } from '../../store/index'
 import { onUpdated } from 'vue'
@@ -19,9 +17,6 @@ import { onUpdated } from 'vue'
 
 const mainStore = useMainStore()
 
-onUpdated(() => {
-    mainStore.generateObjects 
-})
 </script>
 
 <style scoped lang="scss">
