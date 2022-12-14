@@ -1,14 +1,12 @@
 <template>
     <div class="numbers">
-        <div v-for="object in mainStore.unchecked" class="numbers__number">
+        <div v-for="object in mainStore.unchecked" class="numbers__box">
             <input type="checkbox" class="numbers__checkbox" v-model="object.check">
             <p class="numbers__number">{{object.number}}</p>
         </div>
-        <hr>
-        <p></p>
-        <p>Total: {{mainStore.sum}}</p>
-        <hr>
     </div>
+    <hr>
+    <p>Total: {{mainStore.sum}}</p>
 </template>
 
 <script setup lang="ts">
@@ -22,14 +20,18 @@ const mainStore = useMainStore()
 @import '../src/styles/main.scss';
 
 .numbers{
-    outline: 1px solid red;
     height: 550px;
-}
-.numbers__number{
-    outline: 1px solid green;
+    &__box{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 55px;
+    }
+    &__checkbox{
+    margin-right: 10px;
+    }
+    &__number{
+    width: 20px;
+    }
 }
-
 </style>

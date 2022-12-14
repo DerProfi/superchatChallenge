@@ -2,9 +2,8 @@
     <div class="container">
         <div>
             <h1>Welcome</h1>
-            <p>Hello people, welcome to my take home challenge for superchat. If you have questions, please don't hesitate to contact me.</p>
-            
-            <router-link to="/numbers" @click="mainStore.generateObjects">To the challenge</router-link>
+            <p>Hello people, welcome to my take home challenge for Superchat. If you have questions, please don't hesitate to contact me.</p>
+            <router-link class="button" to="/numbers" @click="mainStore.generateObjects">To the challenge</router-link>
         </div>
     </div>
 </template>
@@ -19,8 +18,4 @@ const mainStore = useMainStore()
 <style lang="scss">
 @import '../src/styles/main.scss';
 
-a {
-    color: white;
-    display: inline-block;
-}
 </style>

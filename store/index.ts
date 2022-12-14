@@ -15,12 +15,12 @@ export const useMainStore = defineStore({
     actions: {
         generateObjects(){
             for (let i = 0; i < 10; i++) {
-                this.numbers[i] = {'number': (Math.floor(Math.random()* 10)), 'check': false} 
+                this.numbers[i] = {'number': (Math.floor(Math.random()* 100)), 'check': false} 
             }
             this.getSum();
         },
         deleteChecked(){
-            if (window.confirm("Are you sure you want to delete the number?"))
+            if (window.confirm("Are you sure you want to delete the number(s)?"))
                  this.numbers = this.numbers.filter((number) => !number.check)
             this.getSum();
         },

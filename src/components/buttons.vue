@@ -1,6 +1,6 @@
 <template>
     <div>
-    <button class="button" @click="mainStore.generateObjects">generate</button>
+    <button class="button" @click="mainStore.generateObjects">reset</button>
     <button class="button" @click="mainStore.deleteChecked">delete</button>
     <button class="button" @click="postRequest">send</button>
     </div>
